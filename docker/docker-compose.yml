@@ -1,0 +1,34 @@
+#version: '3.8'
+x-xxx-common-services-config: &common-services-config
+  restart: always
+
+x-common-variables: &common-variables
+  FLASK_DEBUG: 1
+
+
+x-flaskenv: &flask-env
+  <<: *common-variables
+  FLASK_APP: app
+  SECRET_KEY: supersecret
+
+x-xxx-port-mapping:
+  webservices:
+    flask-app: &flask-app-port
+      - 8080:5000
+
+
+services:
+  flask-app:
+    <<: *common-services-config
+    environment: *flask-env
+    ports: *flask-app-port
+    image: my-flask-app
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ../:/code
+
+
+
+

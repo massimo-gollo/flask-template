@@ -9,15 +9,22 @@ class User(me.Document, UserMixin):
     password_hash = me.StringField(default='')
     active = me.BooleanField(default=True)
 
+    def get_resources(self):
+        from app.models.resource import Resource
+        return Resource.objects.get_or_404(author=self)
+
     def to_dict(self, include_email=False):
         data = {
             'id': self.id,
             'username': self.username,
+            # 'resource_count': self.get_ruppus.count(),
             '_links': {
                 'self': url_for('api.get_user', id=self.id),
+                'resources': url_for('api.get_resources', id=self.id),
                 #  'avatar': self.avatar(128)
             }
         }
+
         if include_email:
             data['email'] = self.email
         return data

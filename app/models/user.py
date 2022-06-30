@@ -8,6 +8,16 @@ class User(me.Document, UserMixin):
     email = me.StringField(default='')
     password_hash = me.StringField(default='')
     active = me.BooleanField(default=True)
+    profile_pic = me.StringField(default='')
+
+    def is_anonymous(self):
+        return False
+
+    def is_authenticated(self):
+        return True
+
+    # http://docs.mongoengine.org/guide/defining-documents.html#indexes
+    # token = me.StringField(default='')
 
     def get_resources(self):
         from app.models.resource import Resource
@@ -40,6 +50,5 @@ class User(me.Document, UserMixin):
     def set_password(self, password):
         self.password_hash = password
 
-
-def __repr__(self):
-    return '<User {}>'.format(self.username)
+    def __repr__(self):
+        return '<User {}>'.format(self.username)

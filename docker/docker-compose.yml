@@ -2,6 +2,11 @@
 x-xxx-common-services-config: &common-services-config
   restart: always
 
+
+x-xxx-google-auth: &google-auth
+  GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+  GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+
 x-common-variables: &common-variables
   FLASK_DEBUG: 1
 
@@ -11,6 +16,7 @@ x-mongo-db-env: &mongo-db-env
 
 x-flaskenv: &flask-env
   <<: *common-variables
+  <<: *google-auth
   FLASK_APP: app
   SECRET_KEY: supersecret
   MONGO_HOST: mongo-db
@@ -18,6 +24,7 @@ x-flaskenv: &flask-env
   MONGO_USER: *mongo-db-user
   MONGO_PASS: *mongo-db-password
   MONGO_NAME: flask-template
+
 
 x-xxx-port-mapping:
   webservices:

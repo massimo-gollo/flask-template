@@ -13,3 +13,9 @@ class Config:
         'password': environ.get("MONGO_PASS"),
         'authentication_source': environ.get("MONGO_AUTH_SOURCE") or 'admin'
     }
+
+    GOOGLE_CLIENT_ID = environ.get("GOOGLE_CLIENT_ID", None)
+    GOOGLE_CLIENT_SECRET = environ.get("GOOGLE_CLIENT_SECRET", None)
+    GOOGLE_DISCOVERY_URL = (
+        "https://accounts.google.com/.well-known/openid-configuration"
+    )

@@ -2,7 +2,6 @@ from app.api import api_bp as bp
 from flask import request, url_for
 from app.models.user import User
 from app.tools import jsonify
-from werkzeug.http import HTTP_STATUS_CODES
 from app.api.errors import bad_request
 
 
@@ -40,7 +39,7 @@ def create_user():
     return response
 
 
-@bp.route('/users/<id>/ruppu/<int:resource_id>')
+@bp.route('/users/<id>/resource/<int:resource_id>')
 def get_resource(id, resource_id):
     pass
 

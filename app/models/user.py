@@ -27,7 +27,7 @@ class User(me.Document, UserMixin):
         data = {
             'id': self.id,
             'username': self.username,
-            # 'resource_count': self.get_ruppus.count(),
+            # 'resource_count': self.get_resource.count(),
             '_links': {
                 'self': url_for('api.get_user', id=self.id),
                 'resources': url_for('api.get_resources', id=self.id),

@@ -23,4 +23,5 @@ pymongo==4.1.1
 SQLAlchemy==1.4.39
 Werkzeug==2.1.2
 WTForms==3.0.1
-simplejson
+simplejson~=3.17.6
+PyJWT~=2.4.0

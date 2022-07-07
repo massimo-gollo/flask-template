@@ -1,4 +1,5 @@
 from os import environ
+from datetime import timedelta
 
 
 class Config:
@@ -19,3 +20,8 @@ class Config:
     GOOGLE_DISCOVERY_URL = (
         "https://accounts.google.com/.well-known/openid-configuration"
     )
+
+    JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=1)
+    JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=30)
+
+
